@@ -1,0 +1,306 @@
+/* selectores
+x elemento es decir segun cada tipo de etiqueta
+x id empezando con #
+x clase emepzando con .
+x atributo ejm href o src
+combinacion de descendentes los hijos de las clases
+.cliente > p selecciona a todos los hijos con esa etiqueta
+
+se toma el ultimo que encuentre respecto a cada elemento segun la especifidad
+si prefieres una cobre otra escribir important nrecomendable
+la fuente es de google fonts luego de seleccionar el link dejarlo en el head del index
+Normalize: permite unificar el diseño en todos lados
+*/
+:root {
+    --blanco: #ffffff;
+    --oscuro: #212121;
+    --primario: #FFC107;
+    --secundario: #0097A7;
+    --gris: #757575;
+    --grisclaro: #dfe9f3;
+}
+
+html {
+    font-size: 62.5%;
+    /* se coloca este porcentaje para igual los rem a px*/
+    box-sizing: border-box;
+    scroll-snap-type: y mandatory;
+}
+
+/*scroll snap*/
+.servicios,
+.navegacion-principal,
+.formulario {
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+body {
+    font-size: 16px;
+    /*1 rem =10 px*/
+    font-family: 'Krub', sans-serif;
+    /*degradado*/
+    background-image: linear-gradient(to top, var(--grisclaro) 0%, var(--blanco) 100%);
+}
+
+.contenedor {
+    max-width: 120rem;
+    margin: 0 auto;
+    /* agregar separacion en el margen */
+}
+
+.boton {
+    background-color: var(--secundario);
+    color: var(--blanco);
+    padding: 1rem 3rem;
+    margin-top: 1rem;
+    font-size: 2rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: bold;
+    border-radius: .5rem;
+    width: 90%;
+    text-align: center;
+    border: none;
+}
+
+@media (min-width: 768px) {
+    .boton {
+        width: auto;
+    }
+
+}
+
+.boton::hover {
+    cursor: pointer;
+}
+.sombra {
+    /*los tres comandos son prefijos segun el nav*/
+    box-shadow: 0px 5px 15px 26px rgba(112, 112, 112, 0.32);
+    background-color: var(--blanco);
+    padding: 2rem;
+    border-radius: 1rem;
+}
+/* tipografia*/
+h1 {
+    font-size: 3.8rem;
+}
+h2 {
+    font-size: 2.8rem;
+}
+h3 {
+    font-size: 1.8rem;
+}
+h1,
+h2,
+h3 {
+    text-align: center;
+}
+/*titulos*/
+.titulo span {
+    font-size: 2.1rem;
+}
+
+/*utilidades*/
+.w-sm-100{
+    width: 100%;
+}
+@media (min-width: 768px) {
+    .w-sm-100 {
+        width: auto;
+    }
+
+}
+.flex {
+    display: flex;
+}
+.alinear-derecha {
+    justify-content: flex-end;
+}
+
+/* se crea esa lase ocmo utilitaria*/
+.nav-bg {
+    background-color: var(--secundario);
+}
+
+.navegacion-principal {
+    display: flex;
+    flex-direction: column;
+    /* display y felxbox distrubuir elementos*/
+}
+
+/* diseño responsive 
+ruta de acceso automatizacion media querie C:\Users\YENNI\AppData\Roaming\Code\User\snippets\css.json
+con mq se accede dedes aca
+*/
+
+@media(min-width: 768px) {
+    .navegacion-principal {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+}
+
+.navegacion-principal a {
+    color: var(--blanco);
+    text-decoration: none;
+    font-size: 2rem;
+    font-weight: bold;
+    /* negritas se coloca bold o 700*/
+    padding: 1rem;
+    text-align: center;
+}
+
+.navegacion-principal a:hover {
+    /* hover da el efeceto que al pararse cambie de color
+    hay diferentes seudoclases segun lo que se deseas*/
+    background-color: var(--primario);
+    color: var(--oscuro);
+}
+
+.hero {
+    background-image: url(../img/hero.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 450px;
+    /*padding: 20px;*/
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+.contenido-hero {
+    position: absolute;
+    background-color: rgb(0 0 0 / 60%);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.contenido-hero h2,
+.contenido-hero p {
+    color: var(--blanco);
+
+}
+
+.contenido-hero .ubicacion {
+    display: flex;
+    align-items: flex-end;
+}
+
+/**servicios*/
+@media (min-width: 768px) {
+    .servicios {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        /* 1fr=25% fr es una fraccion de un elemento*/
+        /* grid-template-rows: 200px 800px  ;
+    version corta de los grids templates
+    grid: 200px 800px / 200px 200px ;*/
+        column-gap: 1rem;
+    }
+}
+
+.servicio {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.servicio h3 {
+    color: var(--secundario);
+    font-weight: normal;
+}
+
+.servicio p {
+    line-height: 2;
+    text-align: center;
+}
+
+.servicio .iconos {
+    height: 15rem;
+    width: 15rem;
+    background-color: var(--primario);
+    border-radius: 50%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+/**contacto*/
+.formulario {
+    background-color: var(--gris);
+    width: min(60rem, 100%);
+    /* funcion que evalua si el 100% de la pantalla es inferior al primer valor*/
+    margin: 0 auto;
+    padding: 2rem;
+    border-radius: 1rem;
+}
+
+.formulario fieldset {
+    border: none;
+}
+
+.formulario legend {
+    text-align: center;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    color: var(--primario);
+}
+
+@media (min-width: 768px) {
+    .contenedor-campos {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 1rem;
+        grid-template-rows: auto auto 20rem;
+        padding-bottom: 2rem;
+    }
+
+    .campo:nth-child(3),
+    .campo:nth-child(4) {
+        grid-column: 1 / 3;
+        /*cambia el orden dentro del grid segun la columna y fila*/
+    }
+}
+
+.campo {
+    margin-bottom: 1rem;
+}
+
+.campo label {
+    color: var(--blanco);
+    font-weight: bold;
+    margin-bottom: .5rem;
+    display: block;
+}
+
+.campo textarea {
+    height: 20rem;
+
+}
+
+.input-text {
+    width: 100%;
+    border: none;
+    padding: 1.5rem;
+    border-radius: .5rem;
+
+}
+
+/*footer*/
+.footer {
+    text-align: center;
+    font-weight: bold;
+}
